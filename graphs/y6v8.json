@@ -1,0 +1,53 @@
+{
+    "properties": {
+        "name": "geo5servertest",
+        "id": "y6v8",
+        "project": "servertest",
+        "environment": {
+            "type": "noflo-nodejs"
+        }
+    },
+    "inports": {},
+    "outports": {},
+    "groups": [],
+    "processes": {
+        "core/Repeat_wfesy": {
+            "component": "core/Repeat",
+            "metadata": {
+                "label": "core/Repeat",
+                "x": 180,
+                "y": 180
+            }
+        },
+        "core/Output_fxmm1": {
+            "component": "core/Output",
+            "metadata": {
+                "label": "core/Output",
+                "x": 432,
+                "y": 252
+            }
+        }
+    },
+    "connections": [
+        {
+            "src": {
+                "process": "core/Repeat_wfesy",
+                "port": "out"
+            },
+            "tgt": {
+                "process": "core/Output_fxmm1",
+                "port": "in"
+            },
+            "metadata": {
+                "route": null
+            }
+        },
+        {
+            "data": "hello world",
+            "tgt": {
+                "process": "core/Repeat_wfesy",
+                "port": "in"
+            }
+        }
+    ]
+}
