@@ -20,19 +20,43 @@
                 "y": 0
             }
         },
-        "cube/EventQuery_ejahs": {
+        "objects/ExtractProperty_av4np": {
+            "component": "objects/ExtractProperty",
+            "metadata": {
+                "label": "objects/ExtractProperty",
+                "x": -936,
+                "y": 36
+            }
+        },
+        "objects/ExtractProperty_jhl33": {
+            "component": "objects/ExtractProperty",
+            "metadata": {
+                "label": "objects/ExtractProperty",
+                "x": -792,
+                "y": -36
+            }
+        },
+        "cube/EventQuery_emk49": {
             "component": "cube/EventQuery",
             "metadata": {
                 "label": "cube/EventQuery",
-                "x": -720,
-                "y": -144
+                "x": -936,
+                "y": -216
+            }
+        },
+        "objects/ExtractProperty_35fxi": {
+            "component": "objects/ExtractProperty",
+            "metadata": {
+                "label": "objects/ExtractProperty",
+                "x": -648,
+                "y": 108
             }
         }
     },
     "connections": [
         {
             "src": {
-                "process": "cube/EventQuery_ejahs",
+                "process": "cube/EventQuery_emk49",
                 "port": "log"
             },
             "tgt": {
@@ -43,20 +67,80 @@
         },
         {
             "src": {
-                "process": "cube/EventQuery_ejahs",
+                "process": "cube/EventQuery_emk49",
+                "port": "out"
+            },
+            "tgt": {
+                "process": "objects/ExtractProperty_av4np",
+                "port": "in"
+            },
+            "metadata": {}
+        },
+        {
+            "src": {
+                "process": "objects/ExtractProperty_av4np",
+                "port": "out"
+            },
+            "tgt": {
+                "process": "objects/ExtractProperty_jhl33",
+                "port": "in"
+            },
+            "metadata": {
+                "route": null
+            }
+        },
+        {
+            "src": {
+                "process": "objects/ExtractProperty_jhl33",
+                "port": "out"
+            },
+            "tgt": {
+                "process": "objects/ExtractProperty_35fxi",
+                "port": "in"
+            },
+            "metadata": {
+                "route": null
+            }
+        },
+        {
+            "src": {
+                "process": "objects/ExtractProperty_35fxi",
                 "port": "out"
             },
             "tgt": {
                 "process": "core/Output_fxmm1",
                 "port": "in"
             },
-            "metadata": {}
+            "metadata": {
+                "route": null
+            }
         },
         {
-            "data": "en_tweet(text,id,user)",
+            "data": "data",
             "tgt": {
-                "process": "cube/EventQuery_ejahs",
+                "process": "objects/ExtractProperty_av4np",
+                "port": "key"
+            }
+        },
+        {
+            "data": "en_hashtag(tag.text)",
+            "tgt": {
+                "process": "cube/EventQuery_emk49",
                 "port": "in"
+            }
+        },
+        {
+            "data": "tag",
+            "tgt": {
+                "process": "objects/ExtractProperty_jhl33",
+                "port": "key"
+            }
+        },
+        {
+            "data": "text",
+            "tgt": {
+                "process": "objects/ExtractProperty_35fxi",
+                "port": "key"
             }
         }
     ]
