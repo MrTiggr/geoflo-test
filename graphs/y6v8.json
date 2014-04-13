@@ -12,41 +12,50 @@
     "outports": {},
     "groups": [],
     "processes": {
-        "core/Repeat_wfesy": {
-            "component": "core/Repeat",
-            "metadata": {
-                "label": "core/Repeat",
-                "x": 180,
-                "y": 180
-            }
-        },
         "core/Output_fxmm1": {
             "component": "core/Output",
             "metadata": {
                 "label": "core/Output",
-                "x": 432,
-                "y": 252
+                "x": -540,
+                "y": 0
+            }
+        },
+        "cube/EventQuery_ejahs": {
+            "component": "cube/EventQuery",
+            "metadata": {
+                "label": "cube/EventQuery",
+                "x": -720,
+                "y": -144
             }
         }
     },
     "connections": [
         {
             "src": {
-                "process": "core/Repeat_wfesy",
+                "process": "cube/EventQuery_ejahs",
+                "port": "log"
+            },
+            "tgt": {
+                "process": "core/Output_fxmm1",
+                "port": "in"
+            },
+            "metadata": {}
+        },
+        {
+            "src": {
+                "process": "cube/EventQuery_ejahs",
                 "port": "out"
             },
             "tgt": {
                 "process": "core/Output_fxmm1",
                 "port": "in"
             },
-            "metadata": {
-                "route": null
-            }
+            "metadata": {}
         },
         {
-            "data": "hello world",
+            "data": "en_tweet(text,id,user)",
             "tgt": {
-                "process": "core/Repeat_wfesy",
+                "process": "cube/EventQuery_ejahs",
                 "port": "in"
             }
         }
