@@ -1,0 +1,227 @@
+{
+    "properties": {
+        "name": "NJS Runtime test",
+        "id": "NJS_Runtime test",
+        "project": "geoflo-test",
+        "environment": {
+            "type": "noflo-nodejs"
+        }
+    },
+    "inports": {},
+    "outports": {},
+    "groups": [],
+    "processes": {
+        "geoflow/UDPDataSensor_q877o": {
+            "component": "geoflow/UDPDataSensor",
+            "metadata": {
+                "label": "geoflow/UDPDataSensor",
+                "x": -108,
+                "y": -324
+            }
+        },
+        "objects/ExtractProperty_8bww8": {
+            "component": "objects/ExtractProperty",
+            "metadata": {
+                "label": "objects/ExtractProperty",
+                "x": 288,
+                "y": -144
+            }
+        },
+        "strings/ParseJson_e537w": {
+            "component": "strings/ParseJson",
+            "metadata": {
+                "label": "strings/ParseJson",
+                "x": 36,
+                "y": -144
+            }
+        },
+        "core/Drop_q7eqr": {
+            "component": "core/Drop",
+            "metadata": {
+                "label": "core/Drop",
+                "x": 108,
+                "y": -504
+            }
+        },
+        "objects/ExtractProperty_tmyqr": {
+            "component": "objects/ExtractProperty",
+            "metadata": {
+                "label": "objects/ExtractProperty",
+                "x": 288,
+                "y": -36
+            }
+        },
+        "objects/ExtractProperty_nnft": {
+            "component": "objects/ExtractProperty",
+            "metadata": {
+                "label": "objects/ExtractProperty",
+                "x": 288,
+                "y": -252
+            }
+        },
+        "core/Output_4p9hh": {
+            "component": "core/Output",
+            "metadata": {
+                "label": "core/Output",
+                "x": 648,
+                "y": -324
+            }
+        },
+        "math/Multiply_9q5j7": {
+            "component": "math/Multiply",
+            "metadata": {
+                "label": "math/Multiply",
+                "x": 504,
+                "y": -144
+            }
+        }
+    },
+    "connections": [
+        {
+            "src": {
+                "process": "geoflow/UDPDataSensor_q877o",
+                "port": "out"
+            },
+            "tgt": {
+                "process": "strings/ParseJson_e537w",
+                "port": "in"
+            },
+            "metadata": {
+                "route": null
+            }
+        },
+        {
+            "src": {
+                "process": "strings/ParseJson_e537w",
+                "port": "out"
+            },
+            "tgt": {
+                "process": "objects/ExtractProperty_8bww8",
+                "port": "in"
+            },
+            "metadata": {}
+        },
+        {
+            "src": {
+                "process": "geoflow/UDPDataSensor_q877o",
+                "port": "log"
+            },
+            "tgt": {
+                "process": "core/Drop_q7eqr",
+                "port": "in"
+            },
+            "metadata": {
+                "route": null
+            }
+        },
+        {
+            "src": {
+                "process": "strings/ParseJson_e537w",
+                "port": "out"
+            },
+            "tgt": {
+                "process": "objects/ExtractProperty_tmyqr",
+                "port": "in"
+            },
+            "metadata": {
+                "route": 0
+            }
+        },
+        {
+            "src": {
+                "process": "strings/ParseJson_e537w",
+                "port": "out"
+            },
+            "tgt": {
+                "process": "objects/ExtractProperty_nnft",
+                "port": "in"
+            },
+            "metadata": {}
+        },
+        {
+            "src": {
+                "process": "objects/ExtractProperty_nnft",
+                "port": "out"
+            },
+            "tgt": {
+                "process": "math/Multiply_9q5j7",
+                "port": "multiplier"
+            },
+            "metadata": {
+                "route": null
+            }
+        },
+        {
+            "src": {
+                "process": "math/Multiply_9q5j7",
+                "port": "product"
+            },
+            "tgt": {
+                "process": "core/Output_4p9hh",
+                "port": "in"
+            },
+            "metadata": {}
+        },
+        {
+            "src": {
+                "process": "objects/ExtractProperty_8bww8",
+                "port": "out"
+            },
+            "tgt": {
+                "process": "math/Multiply_9q5j7",
+                "port": "multiplier"
+            },
+            "metadata": {
+                "route": 0
+            }
+        },
+        {
+            "src": {
+                "process": "objects/ExtractProperty_tmyqr",
+                "port": "out"
+            },
+            "tgt": {
+                "process": "math/Multiply_9q5j7",
+                "port": "multiplier"
+            },
+            "metadata": {
+                "route": 0
+            }
+        },
+        {
+            "data": "33333",
+            "tgt": {
+                "process": "geoflow/UDPDataSensor_q877o",
+                "port": "port"
+            }
+        },
+        {
+            "data": "aX",
+            "tgt": {
+                "process": "objects/ExtractProperty_8bww8",
+                "port": "key"
+            }
+        },
+        {
+            "data": "aY",
+            "tgt": {
+                "process": "objects/ExtractProperty_tmyqr",
+                "port": "key"
+            }
+        },
+        {
+            "data": "aZ",
+            "tgt": {
+                "process": "objects/ExtractProperty_nnft",
+                "port": "key"
+            }
+        },
+        {
+            "data": 9.8,
+            "tgt": {
+                "process": "math/Multiply_9q5j7",
+                "port": "multiplier"
+            }
+        }
+    ]
+}
