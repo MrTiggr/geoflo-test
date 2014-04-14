@@ -1,0 +1,73 @@
+{
+    "properties": {
+        "name": "Browsergraph",
+        "id": "Browsergraph",
+        "project": "geoflo-test",
+        "environment": {
+            "type": "noflo-nodejs",
+            "content": ""
+        },
+        "description": "NoFlow GeoProcessing Samples"
+    },
+    "inports": {},
+    "outports": {
+        "out": {
+            "process": "core/Output_axwbl",
+            "port": "out",
+            "metadata": {
+                "x": 1008,
+                "y": 180
+            }
+        }
+    },
+    "groups": [],
+    "processes": {
+        "core/Output_axwbl": {
+            "component": "core/Output",
+            "metadata": {
+                "label": "core/Output",
+                "x": 864,
+                "y": 180
+            }
+        },
+        "geoflow/UDPDataSensor_gbxbb": {
+            "component": "geoflow/UDPDataSensor",
+            "metadata": {
+                "label": "geoflow/UDPDataSensor",
+                "x": 551.5394213159111,
+                "y": 66.80797223543898
+            }
+        }
+    },
+    "connections": [
+        {
+            "src": {
+                "process": "geoflow/UDPDataSensor_gbxbb",
+                "port": "log"
+            },
+            "tgt": {
+                "process": "core/Output_axwbl",
+                "port": "in"
+            },
+            "metadata": {}
+        },
+        {
+            "src": {
+                "process": "geoflow/UDPDataSensor_gbxbb",
+                "port": "out"
+            },
+            "tgt": {
+                "process": "core/Output_axwbl",
+                "port": "in"
+            },
+            "metadata": {}
+        },
+        {
+            "data": "33333",
+            "tgt": {
+                "process": "geoflow/UDPDataSensor_gbxbb",
+                "port": "port"
+            }
+        }
+    ]
+}
