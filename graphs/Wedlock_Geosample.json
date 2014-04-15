@@ -15,7 +15,7 @@
             "component": "geoflow/UDPDataSensor",
             "metadata": {
                 "label": "UDP Data Sensor",
-                "x": 324,
+                "x": 288,
                 "y": 144
             }
         },
@@ -39,16 +39,16 @@
             "component": "core/Output",
             "metadata": {
                 "label": "Console Output",
-                "x": 1296,
-                "y": 864
+                "x": 1404,
+                "y": 792
             }
         },
         "core/Drop_6mhxd": {
             "component": "core/Drop",
             "metadata": {
                 "label": "Rubbish Bucket",
-                "x": 1260,
-                "y": 108
+                "x": 1440,
+                "y": 144
             }
         },
         "geoflow/LocationTracker_qsxis": {
@@ -78,7 +78,7 @@
         "geoflow/TangledPairTracker_d6dnx": {
             "component": "geoflow/TangledPairTracker",
             "metadata": {
-                "label": "geoflow/TangledPairTracker",
+                "label": "Tangled Pair Tracker",
                 "x": 1116,
                 "y": 504
             }
@@ -86,9 +86,9 @@
         "geoflow/StrayFromAlert_f2fgf": {
             "component": "geoflow/StrayFromAlert",
             "metadata": {
-                "label": "geoflow/StrayFromAlert",
-                "x": 1044,
-                "y": 864
+                "label": "Stray-From Geo. Alert",
+                "x": 1152,
+                "y": 720
             }
         }
     },
@@ -232,7 +232,9 @@
                 "process": "geoflow/StrayFromAlert_f2fgf",
                 "port": "in"
             },
-            "metadata": {}
+            "metadata": {
+                "route": 1
+            }
         },
         {
             "src": {
@@ -243,7 +245,9 @@
                 "process": "core/Output_nhqzn",
                 "port": "in"
             },
-            "metadata": {}
+            "metadata": {
+                "route": 3
+            }
         },
         {
             "src": {
@@ -254,7 +258,9 @@
                 "process": "core/Output_nhqzn",
                 "port": "in"
             },
-            "metadata": {}
+            "metadata": {
+                "route": 10
+            }
         },
         {
             "data": "33333",
@@ -306,17 +312,17 @@
             }
         },
         {
-            "data": "500",
-            "tgt": {
-                "process": "geoflow/StrayFromAlert_f2fgf",
-                "port": "alarm_distance"
-            }
-        },
-        {
             "data": "geometry",
             "tgt": {
                 "process": "geoflow/StrayFromAlert_f2fgf",
                 "port": "geom_field"
+            }
+        },
+        {
+            "data": "2.5",
+            "tgt": {
+                "process": "geoflow/StrayFromAlert_f2fgf",
+                "port": "alarm_distance"
             }
         }
     ]
