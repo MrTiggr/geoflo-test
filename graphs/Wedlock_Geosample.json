@@ -1,0 +1,180 @@
+{
+    "properties": {
+        "name": "Wedlock Geosample",
+        "id": "Wedlock_Geosample",
+        "project": "geoflo-test",
+        "environment": {
+            "type": "noflo-nodejs"
+        }
+    },
+    "inports": {},
+    "outports": {},
+    "groups": [],
+    "processes": {
+        "geoflow/UDPDataSensor_o5s0l": {
+            "component": "geoflow/UDPDataSensor",
+            "metadata": {
+                "label": "UDP Data Sensor",
+                "x": 324,
+                "y": 144
+            }
+        },
+        "strings/ParseJson_z6km6": {
+            "component": "strings/ParseJson",
+            "metadata": {
+                "label": "ParseJson",
+                "x": 576,
+                "y": 504
+            }
+        },
+        "core/MakeFunction_avpxs": {
+            "component": "core/MakeFunction",
+            "metadata": {
+                "label": "Create Geometry",
+                "x": 684,
+                "y": 504
+            }
+        },
+        "core/Output_nhqzn": {
+            "component": "core/Output",
+            "metadata": {
+                "label": "Console Output",
+                "x": 1080,
+                "y": 648
+            }
+        },
+        "core/Drop_6mhxd": {
+            "component": "core/Drop",
+            "metadata": {
+                "label": "Bit Bucket",
+                "x": 1080,
+                "y": 144
+            }
+        },
+        "packets/SplitPacket_pfeo1": {
+            "component": "packets/SplitPacket",
+            "metadata": {
+                "label": "Multithread",
+                "x": 432,
+                "y": 360
+            }
+        },
+        "geoflow/LocationTracker_qsxis": {
+            "component": "geoflow/LocationTracker",
+            "metadata": {
+                "label": "Track Unique Objects",
+                "x": 864,
+                "y": 504
+            }
+        }
+    },
+    "connections": [
+        {
+            "src": {
+                "process": "strings/ParseJson_z6km6",
+                "port": "out"
+            },
+            "tgt": {
+                "process": "core/MakeFunction_avpxs",
+                "port": "in"
+            },
+            "metadata": {}
+        },
+        {
+            "src": {
+                "process": "geoflow/UDPDataSensor_o5s0l",
+                "port": "log"
+            },
+            "tgt": {
+                "process": "core/Drop_6mhxd",
+                "port": "in"
+            },
+            "metadata": {
+                "route": 3
+            }
+        },
+        {
+            "src": {
+                "process": "geoflow/UDPDataSensor_o5s0l",
+                "port": "out"
+            },
+            "tgt": {
+                "process": "packets/SplitPacket_pfeo1",
+                "port": "in"
+            },
+            "metadata": {}
+        },
+        {
+            "src": {
+                "process": "packets/SplitPacket_pfeo1",
+                "port": "out"
+            },
+            "tgt": {
+                "process": "strings/ParseJson_z6km6",
+                "port": "in"
+            },
+            "metadata": {}
+        },
+        {
+            "src": {
+                "process": "core/MakeFunction_avpxs",
+                "port": "out"
+            },
+            "tgt": {
+                "process": "geoflow/LocationTracker_qsxis",
+                "port": "in"
+            },
+            "metadata": {}
+        },
+        {
+            "src": {
+                "process": "geoflow/LocationTracker_qsxis",
+                "port": "out"
+            },
+            "tgt": {
+                "process": "core/Output_nhqzn",
+                "port": "in"
+            },
+            "metadata": {}
+        },
+        {
+            "src": {
+                "process": "geoflow/LocationTracker_qsxis",
+                "port": "log"
+            },
+            "tgt": {
+                "process": "core/Drop_6mhxd",
+                "port": "in"
+            },
+            "metadata": {}
+        },
+        {
+            "data": "33333",
+            "tgt": {
+                "process": "geoflow/UDPDataSensor_o5s0l",
+                "port": "port"
+            }
+        },
+        {
+            "data": "x.geometry={x:x.lon,y:x.lat};return x;",
+            "tgt": {
+                "process": "core/MakeFunction_avpxs",
+                "port": "function"
+            }
+        },
+        {
+            "data": "geometry",
+            "tgt": {
+                "process": "geoflow/LocationTracker_qsxis",
+                "port": "geom_field"
+            }
+        },
+        {
+            "data": "device_id",
+            "tgt": {
+                "process": "geoflow/LocationTracker_qsxis",
+                "port": "id_field"
+            }
+        }
+    ]
+}
