@@ -11,99 +11,160 @@
     "outports": {},
     "groups": [],
     "processes": {
-        "geoflow/UDPDataSensor_o5s0l": {
-            "component": "geoflow/UDPDataSensor",
-            "metadata": {
-                "label": "UDP Data Sensor",
-                "x": 288,
-                "y": 144
-            }
-        },
-        "strings/ParseJson_z6km6": {
-            "component": "strings/ParseJson",
-            "metadata": {
-                "label": "ParseJson",
-                "x": 432,
-                "y": 252
-            }
-        },
         "core/MakeFunction_avpxs": {
             "component": "core/MakeFunction",
             "metadata": {
-                "label": "Create Geometry",
-                "x": 612,
-                "y": 252
-            }
-        },
-        "core/Output_nhqzn": {
-            "component": "core/Output",
-            "metadata": {
-                "label": "Console Output",
-                "x": 1440,
-                "y": 828
-            }
-        },
-        "core/Drop_6mhxd": {
-            "component": "core/Drop",
-            "metadata": {
-                "label": "Rubbish Bucket",
-                "x": 1440,
-                "y": 144
+                "label": "Create Geometry Object",
+                "x": 360,
+                "y": 288
             }
         },
         "geoflow/LocationTracker_qsxis": {
             "component": "geoflow/LocationTracker",
             "metadata": {
                 "label": "Track Unique Objects",
-                "x": 792,
-                "y": 252
+                "x": 576,
+                "y": 432
             }
         },
-        "objects/FilterPropertyValue_pylo7": {
-            "component": "objects/FilterPropertyValue",
+        "geoflow/UDPDataSensor_3in5i": {
+            "component": "geoflow/UDPDataSensor",
             "metadata": {
-                "label": "New Tracked Object",
+                "label": "UDP Geo Sensor",
+                "x": 216,
+                "y": 144
+            }
+        },
+        "strings/ParseJson_z5cth": {
+            "component": "strings/ParseJson",
+            "metadata": {
+                "label": "Parse Json",
+                "x": 360,
+                "y": 144
+            }
+        },
+        "core/Output_s7dcp": {
+            "component": "core/Output",
+            "metadata": {
+                "label": "core/Output",
+                "x": 1548,
+                "y": 1080
+            }
+        },
+        "geoflow/GeoJsonReader_8c7ow": {
+            "component": "geoflow/GeoJsonReader",
+            "metadata": {
+                "label": "Parse Geometry",
+                "x": 360,
+                "y": 432
+            }
+        },
+        "core/Repeat_fzf6h": {
+            "component": "core/Repeat",
+            "metadata": {
+                "label": "START",
+                "x": -36,
+                "y": 576
+            }
+        },
+        "geoflow/WebSocketsServer_qq1wm": {
+            "component": "geoflow/WebSocketsServer",
+            "metadata": {
+                "label": "HTML5 WebSockets:8084",
+                "x": 900,
+                "y": 936
+            }
+        },
+        "geoflow/WebServer_u18xu": {
+            "component": "geoflow/WebServer",
+            "metadata": {
+                "label": "HTML5 Webserver:8088",
+                "x": 720,
+                "y": 1080
+            }
+        },
+        "objects/ExtractProperty_mn6wu": {
+            "component": "objects/ExtractProperty",
+            "metadata": {
+                "label": "objects/ExtractProperty",
+                "x": 792,
+                "y": 288
+            }
+        },
+        "geoflow/TangledPairTracker_5iva0": {
+            "component": "geoflow/TangledPairTracker",
+            "metadata": {
+                "label": "geoflow/TangledPairTracker",
                 "x": 1008,
                 "y": 288
             }
         },
-        "objects/FilterPropertyValue_wc73v": {
-            "component": "objects/FilterPropertyValue",
+        "geoflow/DistanceTo_f12ir": {
+            "component": "geoflow/DistanceTo",
             "metadata": {
-                "label": "Tracked Object Moved",
+                "label": "geoflow/DistanceTo",
                 "x": 1008,
-                "y": 396
+                "y": 468
             }
         },
-        "geoflow/TangledPairTracker_d6dnx": {
-            "component": "geoflow/TangledPairTracker",
+        "core/MakeFunction_yav1p": {
+            "component": "core/MakeFunction",
             "metadata": {
-                "label": "Tangled Pair Tracker",
+                "label": "core/MakeFunction",
                 "x": 1224,
-                "y": 360
+                "y": 468
             }
         },
-        "geoflow/StrayFromAlert_f2fgf": {
-            "component": "geoflow/StrayFromAlert",
+        "geoflow/FilterFunction_ozqh3": {
+            "component": "geoflow/FilterFunction",
             "metadata": {
-                "label": "Stray-From Geo. Alert",
-                "x": 1404,
-                "y": 504
-            }
-        },
-        "geoflow/ProximityAlert_sijm": {
-            "component": "geoflow/ProximityAlert",
-            "metadata": {
-                "label": "Proximity Geo. Alert",
-                "x": 1008,
+                "label": "geoflow/FilterFunction",
+                "x": 1224,
                 "y": 648
+            }
+        },
+        "objects/SetPropertyValue_ayey3": {
+            "component": "objects/SetPropertyValue",
+            "metadata": {
+                "label": "objects/SetPropertyValue",
+                "x": 1404,
+                "y": 684
+            }
+        },
+        "geoflow/FilterFunction_iwugl": {
+            "component": "geoflow/FilterFunction",
+            "metadata": {
+                "label": "geoflow/FilterFunction",
+                "x": 1512,
+                "y": 468
+            }
+        },
+        "objects/SetPropertyValue_7h9us": {
+            "component": "objects/SetPropertyValue",
+            "metadata": {
+                "label": "objects/SetPropertyValue",
+                "x": 1728,
+                "y": 504
             }
         }
     },
     "connections": [
         {
             "src": {
-                "process": "strings/ParseJson_z6km6",
+                "process": "geoflow/UDPDataSensor_3in5i",
+                "port": "out"
+            },
+            "tgt": {
+                "process": "strings/ParseJson_z5cth",
+                "port": "in"
+            },
+            "metadata": {
+                "route": 7
+            }
+        },
+        {
+            "src": {
+                "process": "strings/ParseJson_z5cth",
                 "port": "out"
             },
             "tgt": {
@@ -116,15 +177,15 @@
         },
         {
             "src": {
-                "process": "geoflow/UDPDataSensor_o5s0l",
-                "port": "log"
+                "process": "core/Repeat_fzf6h",
+                "port": "out"
             },
             "tgt": {
-                "process": "core/Drop_6mhxd",
-                "port": "in"
+                "process": "geoflow/UDPDataSensor_3in5i",
+                "port": "start"
             },
             "metadata": {
-                "route": 3
+                "route": 7
             }
         },
         {
@@ -133,7 +194,7 @@
                 "port": "out"
             },
             "tgt": {
-                "process": "geoflow/LocationTracker_qsxis",
+                "process": "geoflow/GeoJsonReader_8c7ow",
                 "port": "in"
             },
             "metadata": {
@@ -142,24 +203,11 @@
         },
         {
             "src": {
-                "process": "geoflow/LocationTracker_qsxis",
-                "port": "log"
-            },
-            "tgt": {
-                "process": "core/Drop_6mhxd",
-                "port": "in"
-            },
-            "metadata": {
-                "route": 3
-            }
-        },
-        {
-            "src": {
-                "process": "geoflow/LocationTracker_qsxis",
+                "process": "geoflow/GeoJsonReader_8c7ow",
                 "port": "out"
             },
             "tgt": {
-                "process": "objects/FilterPropertyValue_pylo7",
+                "process": "geoflow/LocationTracker_qsxis",
                 "port": "in"
             },
             "metadata": {
@@ -168,37 +216,55 @@
         },
         {
             "src": {
+                "process": "geoflow/WebSocketsServer_qq1wm",
+                "port": "out"
+            },
+            "tgt": {
+                "process": "core/Output_s7dcp",
+                "port": "in"
+            },
+            "metadata": {}
+        },
+        {
+            "src": {
+                "process": "geoflow/WebSocketsServer_qq1wm",
+                "port": "log"
+            },
+            "tgt": {
+                "process": "core/Output_s7dcp",
+                "port": "in"
+            },
+            "metadata": {}
+        },
+        {
+            "src": {
+                "process": "geoflow/WebServer_u18xu",
+                "port": "log"
+            },
+            "tgt": {
+                "process": "core/Output_s7dcp",
+                "port": "in"
+            },
+            "metadata": {}
+        },
+        {
+            "src": {
+                "process": "geoflow/WebServer_u18xu",
+                "port": "out"
+            },
+            "tgt": {
+                "process": "core/Output_s7dcp",
+                "port": "in"
+            },
+            "metadata": {}
+        },
+        {
+            "src": {
                 "process": "geoflow/LocationTracker_qsxis",
                 "port": "out"
             },
             "tgt": {
-                "process": "objects/FilterPropertyValue_wc73v",
-                "port": "in"
-            },
-            "metadata": {
-                "route": 9
-            }
-        },
-        {
-            "src": {
-                "process": "geoflow/UDPDataSensor_o5s0l",
-                "port": "out"
-            },
-            "tgt": {
-                "process": "strings/ParseJson_z6km6",
-                "port": "in"
-            },
-            "metadata": {
-                "route": 7
-            }
-        },
-        {
-            "src": {
-                "process": "objects/FilterPropertyValue_pylo7",
-                "port": "out"
-            },
-            "tgt": {
-                "process": "geoflow/TangledPairTracker_d6dnx",
+                "process": "geoflow/WebSocketsServer_qq1wm",
                 "port": "in"
             },
             "metadata": {
@@ -207,93 +273,15 @@
         },
         {
             "src": {
-                "process": "objects/FilterPropertyValue_wc73v",
+                "process": "core/Repeat_fzf6h",
                 "port": "out"
             },
             "tgt": {
-                "process": "geoflow/TangledPairTracker_d6dnx",
-                "port": "in"
+                "process": "geoflow/WebSocketsServer_qq1wm",
+                "port": "start"
             },
             "metadata": {
-                "route": 9
-            }
-        },
-        {
-            "src": {
-                "process": "geoflow/TangledPairTracker_d6dnx",
-                "port": "log"
-            },
-            "tgt": {
-                "process": "core/Drop_6mhxd",
-                "port": "in"
-            },
-            "metadata": {
-                "route": 3
-            }
-        },
-        {
-            "src": {
-                "process": "geoflow/TangledPairTracker_d6dnx",
-                "port": "out"
-            },
-            "tgt": {
-                "process": "geoflow/StrayFromAlert_f2fgf",
-                "port": "in"
-            },
-            "metadata": {
-                "route": 1
-            }
-        },
-        {
-            "src": {
-                "process": "geoflow/StrayFromAlert_f2fgf",
-                "port": "log"
-            },
-            "tgt": {
-                "process": "core/Output_nhqzn",
-                "port": "in"
-            },
-            "metadata": {
-                "route": 3
-            }
-        },
-        {
-            "src": {
-                "process": "geoflow/StrayFromAlert_f2fgf",
-                "port": "out"
-            },
-            "tgt": {
-                "process": "core/Output_nhqzn",
-                "port": "in"
-            },
-            "metadata": {
-                "route": 10
-            }
-        },
-        {
-            "src": {
-                "process": "geoflow/ProximityAlert_sijm",
-                "port": "log"
-            },
-            "tgt": {
-                "process": "core/Output_nhqzn",
-                "port": "in"
-            },
-            "metadata": {
-                "route": 3
-            }
-        },
-        {
-            "src": {
-                "process": "geoflow/ProximityAlert_sijm",
-                "port": "out"
-            },
-            "tgt": {
-                "process": "core/Output_nhqzn",
-                "port": "in"
-            },
-            "metadata": {
-                "route": 10
+                "route": 7
             }
         },
         {
@@ -302,26 +290,123 @@
                 "port": "out"
             },
             "tgt": {
-                "process": "geoflow/ProximityAlert_sijm",
+                "process": "objects/ExtractProperty_mn6wu",
                 "port": "in"
             },
             "metadata": {
-                "route": 9
+                "route": 4
             }
         },
         {
-            "data": "33333",
+            "src": {
+                "process": "objects/ExtractProperty_mn6wu",
+                "port": "out"
+            },
             "tgt": {
-                "process": "geoflow/UDPDataSensor_o5s0l",
-                "port": "port"
+                "process": "geoflow/TangledPairTracker_5iva0",
+                "port": "in"
+            },
+            "metadata": {
+                "route": 0
             }
         },
         {
-            "data": "x.geometry={x:x.lon,y:x.lat};return x;",
+            "src": {
+                "process": "geoflow/TangledPairTracker_5iva0",
+                "port": "out"
+            },
             "tgt": {
-                "process": "core/MakeFunction_avpxs",
-                "port": "function"
+                "process": "geoflow/DistanceTo_f12ir",
+                "port": "in"
+            },
+            "metadata": {
+                "route": 0
             }
+        },
+        {
+            "src": {
+                "process": "geoflow/DistanceTo_f12ir",
+                "port": "out"
+            },
+            "tgt": {
+                "process": "core/MakeFunction_yav1p",
+                "port": "in"
+            },
+            "metadata": {}
+        },
+        {
+            "src": {
+                "process": "core/MakeFunction_yav1p",
+                "port": "out"
+            },
+            "tgt": {
+                "process": "geoflow/FilterFunction_ozqh3",
+                "port": "in"
+            },
+            "metadata": {
+                "route": 0
+            }
+        },
+        {
+            "src": {
+                "process": "geoflow/FilterFunction_ozqh3",
+                "port": "out"
+            },
+            "tgt": {
+                "process": "objects/SetPropertyValue_ayey3",
+                "port": "in"
+            },
+            "metadata": {
+                "route": 0
+            }
+        },
+        {
+            "src": {
+                "process": "objects/SetPropertyValue_ayey3",
+                "port": "out"
+            },
+            "tgt": {
+                "process": "geoflow/WebSocketsServer_qq1wm",
+                "port": "in"
+            },
+            "metadata": {
+                "route": 0
+            }
+        },
+        {
+            "src": {
+                "process": "core/MakeFunction_yav1p",
+                "port": "out"
+            },
+            "tgt": {
+                "process": "geoflow/FilterFunction_iwugl",
+                "port": "in"
+            },
+            "metadata": {
+                "route": 0
+            }
+        },
+        {
+            "src": {
+                "process": "geoflow/FilterFunction_iwugl",
+                "port": "out"
+            },
+            "tgt": {
+                "process": "objects/SetPropertyValue_7h9us",
+                "port": "in"
+            },
+            "metadata": {}
+        },
+        {
+            "src": {
+                "process": "objects/SetPropertyValue_7h9us",
+                "port": "out"
+            },
+            "tgt": {
+                "process": "geoflow/WebSocketsServer_qq1wm",
+                "port": "in"
+            },
+            "metadata": {}
         },
         {
             "data": "geometry",
@@ -338,59 +423,150 @@
             }
         },
         {
-            "data": "type=\"new_track\"",
+            "data": "33333",
             "tgt": {
-                "process": "objects/FilterPropertyValue_pylo7",
-                "port": "accept"
+                "process": "geoflow/UDPDataSensor_3in5i",
+                "port": "port"
             }
         },
         {
-            "data": "type=\"location_change\"",
+            "data": "geometry",
             "tgt": {
-                "process": "objects/FilterPropertyValue_wc73v",
-                "port": "accept"
+                "process": "geoflow/GeoJsonReader_8c7ow",
+                "port": "geom_field"
             }
         },
         {
-            "data": "id",
+            "data": "true",
             "tgt": {
-                "process": "geoflow/TangledPairTracker_d6dnx",
+                "process": "core/Repeat_fzf6h",
+                "port": "in"
+            }
+        },
+        {
+            "data": "8084",
+            "tgt": {
+                "process": "geoflow/WebSocketsServer_qq1wm",
+                "port": "port"
+            }
+        },
+        {
+            "data": "8088",
+            "tgt": {
+                "process": "geoflow/WebServer_u18xu",
+                "port": "port"
+            }
+        },
+        {
+            "data": "x.geometry={type:\"Point\",coordinates:[x.lon,x.lat]};return x;",
+            "tgt": {
+                "process": "core/MakeFunction_avpxs",
+                "port": "function"
+            }
+        },
+        {
+            "data": "data",
+            "tgt": {
+                "process": "objects/ExtractProperty_mn6wu",
+                "port": "key"
+            }
+        },
+        {
+            "data": "device_id",
+            "tgt": {
+                "process": "geoflow/TangledPairTracker_5iva0",
                 "port": "id_field"
             }
         },
         {
-            "data": "geometry",
+            "data": "source",
             "tgt": {
-                "process": "geoflow/StrayFromAlert_f2fgf",
-                "port": "geom_field"
+                "process": "geoflow/DistanceTo_f12ir",
+                "port": "source"
             }
         },
         {
-            "data": "2.5",
+            "data": "target",
             "tgt": {
-                "process": "geoflow/StrayFromAlert_f2fgf",
-                "port": "alarm_distance"
+                "process": "geoflow/DistanceTo_f12ir",
+                "port": "target"
             }
         },
         {
-            "data": "50",
+            "data": "stray_from_distance",
             "tgt": {
-                "process": "geoflow/ProximityAlert_sijm",
-                "port": "alarm_distance"
-            }
-        },
-        {
-            "data": "-35.3202365,149.1320792",
-            "tgt": {
-                "process": "geoflow/ProximityAlert_sijm",
-                "port": "beacon"
+                "process": "geoflow/DistanceTo_f12ir",
+                "port": "context_id"
             }
         },
         {
             "data": "geometry",
             "tgt": {
-                "process": "geoflow/ProximityAlert_sijm",
+                "process": "geoflow/DistanceTo_f12ir",
                 "port": "geom_field"
+            }
+        },
+        {
+            "data": "x.context.stray_from_distance=x.context.stray_from_distance*1000;return x;",
+            "tgt": {
+                "process": "core/MakeFunction_yav1p",
+                "port": "function"
+            }
+        },
+        {
+            "data": "type",
+            "tgt": {
+                "process": "objects/SetPropertyValue_ayey3",
+                "port": "property"
+            }
+        },
+        {
+            "data": "stray_from_alert",
+            "tgt": {
+                "process": "objects/SetPropertyValue_ayey3",
+                "port": "value"
+            }
+        },
+        {
+            "data": "type",
+            "tgt": {
+                "process": "objects/SetPropertyValue_7h9us",
+                "port": "property"
+            }
+        },
+        {
+            "data": "stray_from_alarm",
+            "tgt": {
+                "process": "objects/SetPropertyValue_7h9us",
+                "port": "value"
+            }
+        },
+        {
+            "data": "return x.context.stray_from_distance>=0.02;",
+            "tgt": {
+                "process": "geoflow/FilterFunction_ozqh3",
+                "port": "function"
+            }
+        },
+        {
+            "data": true,
+            "tgt": {
+                "process": "objects/SetPropertyValue_ayey3",
+                "port": "keep"
+            }
+        },
+        {
+            "data": true,
+            "tgt": {
+                "process": "objects/SetPropertyValue_7h9us",
+                "port": "keep"
+            }
+        },
+        {
+            "data": "return x.context.stray_from_distance>=0.18;",
+            "tgt": {
+                "process": "geoflow/FilterFunction_iwugl",
+                "port": "function"
             }
         }
     ]
