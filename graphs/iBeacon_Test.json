@@ -1,0 +1,113 @@
+{
+    "properties": {
+        "name": "iBeacon Test",
+        "id": "iBeacon_Test",
+        "project": "geoflo-test",
+        "environment": {
+            "type": "noflo-nodejs",
+            "content": ""
+        },
+        "description": "Test of apple iBeacon functionality within noflow graphs"
+    },
+    "inports": {},
+    "outports": {},
+    "groups": [],
+    "processes": {
+        "core/Output_d4va3": {
+            "component": "core/Output",
+            "metadata": {
+                "label": "core/Output",
+                "x": 828,
+                "y": 0
+            }
+        },
+        "core/Repeat_hp0pc": {
+            "component": "core/Repeat",
+            "metadata": {
+                "label": "core/Repeat",
+                "x": 504,
+                "y": -36
+            }
+        },
+        "geoflow/iBeacon_4ik0y": {
+            "component": "geoflow/iBeacon",
+            "metadata": {
+                "label": "geoflow/iBeacon",
+                "x": 648,
+                "y": -180
+            }
+        }
+    },
+    "connections": [
+        {
+            "src": {
+                "process": "core/Repeat_hp0pc",
+                "port": "out"
+            },
+            "tgt": {
+                "process": "geoflow/iBeacon_4ik0y",
+                "port": "start"
+            },
+            "metadata": {
+                "route": null
+            }
+        },
+        {
+            "src": {
+                "process": "geoflow/iBeacon_4ik0y",
+                "port": "log"
+            },
+            "tgt": {
+                "process": "core/Output_d4va3",
+                "port": "in"
+            },
+            "metadata": {}
+        },
+        {
+            "src": {
+                "process": "geoflow/iBeacon_4ik0y",
+                "port": "out"
+            },
+            "tgt": {
+                "process": "core/Output_d4va3",
+                "port": "in"
+            },
+            "metadata": {}
+        },
+        {
+            "data": "true",
+            "tgt": {
+                "process": "core/Repeat_hp0pc",
+                "port": "in"
+            }
+        },
+        {
+            "data": "1",
+            "tgt": {
+                "process": "geoflow/iBeacon_4ik0y",
+                "port": "major_id"
+            }
+        },
+        {
+            "data": "0",
+            "tgt": {
+                "process": "geoflow/iBeacon_4ik0y",
+                "port": "minor_id"
+            }
+        },
+        {
+            "data": "-56",
+            "tgt": {
+                "process": "geoflow/iBeacon_4ik0y",
+                "port": "power_level"
+            }
+        },
+        {
+            "data": "b9407f30f5f8466eaff925556b57fe6d",
+            "tgt": {
+                "process": "geoflow/iBeacon_4ik0y",
+                "port": "beacon_uuid"
+            }
+        }
+    ]
+}
