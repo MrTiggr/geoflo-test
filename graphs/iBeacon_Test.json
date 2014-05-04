@@ -13,35 +13,43 @@
     "outports": {},
     "groups": [],
     "processes": {
-        "core/Output_d4va3": {
-            "component": "core/Output",
-            "metadata": {
-                "label": "core/Output",
-                "x": 828,
-                "y": 0
-            }
-        },
-        "core/Repeat_hp0pc": {
-            "component": "core/Repeat",
-            "metadata": {
-                "label": "core/Repeat",
-                "x": 504,
-                "y": -36
-            }
-        },
         "geoflow/iBeacon_4ik0y": {
             "component": "geoflow/iBeacon",
             "metadata": {
-                "label": "geoflow/iBeacon",
-                "x": 648,
-                "y": -180
+                "label": "iBeacon",
+                "x": 612,
+                "y": -324
+            }
+        },
+        "geoflow/TextToSpeech_2uxq8": {
+            "component": "geoflow/TextToSpeech",
+            "metadata": {
+                "label": "Speak Announcement",
+                "x": 936,
+                "y": -324
+            }
+        },
+        "core/Repeat_2amp": {
+            "component": "core/Repeat",
+            "metadata": {
+                "label": "START",
+                "x": 432,
+                "y": -216
+            }
+        },
+        "core/MakeFunction_tmhga": {
+            "component": "core/MakeFunction",
+            "metadata": {
+                "label": "Announce New",
+                "x": 792,
+                "y": -396
             }
         }
     },
     "connections": [
         {
             "src": {
-                "process": "core/Repeat_hp0pc",
+                "process": "core/Repeat_2amp",
                 "port": "out"
             },
             "tgt": {
@@ -49,36 +57,33 @@
                 "port": "start"
             },
             "metadata": {
-                "route": null
+                "route": 0
             }
         },
         {
             "src": {
                 "process": "geoflow/iBeacon_4ik0y",
-                "port": "log"
+                "port": "discover"
             },
             "tgt": {
-                "process": "core/Output_d4va3",
+                "process": "core/MakeFunction_tmhga",
                 "port": "in"
             },
-            "metadata": {}
+            "metadata": {
+                "route": 0
+            }
         },
         {
             "src": {
-                "process": "geoflow/iBeacon_4ik0y",
+                "process": "core/MakeFunction_tmhga",
                 "port": "out"
             },
             "tgt": {
-                "process": "core/Output_d4va3",
+                "process": "geoflow/TextToSpeech_2uxq8",
                 "port": "in"
             },
-            "metadata": {}
-        },
-        {
-            "data": "true",
-            "tgt": {
-                "process": "core/Repeat_hp0pc",
-                "port": "in"
+            "metadata": {
+                "route": null
             }
         },
         {
@@ -103,10 +108,17 @@
             }
         },
         {
-            "data": "b9407f30f5f8466eaff925556b57fe6d",
+            "data": "EyeBeacon service started",
             "tgt": {
-                "process": "geoflow/iBeacon_4ik0y",
-                "port": "beacon_uuid"
+                "process": "core/Repeat_2amp",
+                "port": "in"
+            }
+        },
+        {
+            "data": "return \"A new Beacon was detected within the 100 Acre Woods. Welcome.\";",
+            "tgt": {
+                "process": "core/MakeFunction_tmhga",
+                "port": "function"
             }
         }
     ]
