@@ -1,0 +1,89 @@
+{
+    "properties": {
+        "name": "loadGeoJSON",
+        "id": "loadGeoJSON",
+        "project": "geoflo-test",
+        "environment": {
+            "type": "noflo-nodejs"
+        }
+    },
+    "inports": {
+        "filename": {
+            "process": "filesystem/ReadFile_759dk",
+            "port": "in",
+            "metadata": {
+                "x": 396,
+                "y": 180
+            }
+        }
+    },
+    "outports": {
+        "jsts_geometry": {
+            "process": "geoflow/GeoJsonReader_tjhkx",
+            "port": "out",
+            "metadata": {
+                "x": 1116,
+                "y": 360
+            }
+        },
+        "geojson_geometry": {
+            "process": "strings/ParseJson_ar7tv",
+            "port": "out",
+            "metadata": {
+                "x": 1116,
+                "y": 504
+            }
+        }
+    },
+    "groups": [],
+    "processes": {
+        "filesystem/ReadFile_759dk": {
+            "component": "filesystem/ReadFile",
+            "metadata": {
+                "label": "filesystem/ReadFile",
+                "x": 540,
+                "y": 180
+            }
+        },
+        "strings/ParseJson_ar7tv": {
+            "component": "strings/ParseJson",
+            "metadata": {
+                "label": "strings/ParseJson",
+                "x": 720,
+                "y": 324
+            }
+        },
+        "geoflow/GeoJsonReader_tjhkx": {
+            "component": "geoflow/GeoJsonReader",
+            "metadata": {
+                "label": "geoflow/GeoJsonReader",
+                "x": 936,
+                "y": 216
+            }
+        }
+    },
+    "connections": [
+        {
+            "src": {
+                "process": "filesystem/ReadFile_759dk",
+                "port": "out"
+            },
+            "tgt": {
+                "process": "strings/ParseJson_ar7tv",
+                "port": "in"
+            },
+            "metadata": {}
+        },
+        {
+            "src": {
+                "process": "strings/ParseJson_ar7tv",
+                "port": "out"
+            },
+            "tgt": {
+                "process": "geoflow/GeoJsonReader_tjhkx",
+                "port": "in"
+            },
+            "metadata": {}
+        }
+    ]
+}
