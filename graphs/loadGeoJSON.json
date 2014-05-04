@@ -12,8 +12,8 @@
             "process": "filesystem/ReadFile_759dk",
             "port": "in",
             "metadata": {
-                "x": 396,
-                "y": 180
+                "x": 324,
+                "y": 252
             }
         }
     },
@@ -84,6 +84,13 @@
                 "port": "in"
             },
             "metadata": {}
+        },
+        {
+            "data": "\"loadGeoJSON.json\"",
+            "tgt": {
+                "process": "filesystem/ReadFile_759dk",
+                "port": "in"
+            }
         }
     ]
 }
